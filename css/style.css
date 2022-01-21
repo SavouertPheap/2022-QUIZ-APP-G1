@@ -1,3 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Battambang:wght@300;400&display=swap');
 body{
-    background: red;
+    font-family: 'Battambang', cursive;
+}
+.logo{
+    width: 230px;
+    height: 60px;
+    background-color: #EEA10C;
+}
+.container .content,.cards{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.container .cards .card-image{
+    font-size: 35px;
+    margin: 10px;
+    width: 25rem;
+    height: 50vh;
+}
+.container .cards #start{
+    background-image: url(/img/do-quiz.jpg);
+}
+.container .cards #create{
+    background-image: url(/img/create-quiz.jpg);
+}
+.container .cards .card-image button{
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    height: 2.5rem;
+    width: 7rem;
+    border: none;
+    background: #EEA10C;
 }
