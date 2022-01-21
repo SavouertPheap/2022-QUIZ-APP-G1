@@ -33,6 +33,12 @@ body{
     text-align: center;
     height: 2.5rem;
     width: 7rem;
+    margin-left: 3rem;
+    margin-top: 3rem;
     border: none;
     background: #EEA10C;
+}
+.container .cards .card-image #p{
+    margin-left: 3rem;
+    margin-top: 7rem;
 }
