@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Battambang:wght@300;400&display=swap');
-body{
+*{
+    padding: 0;
+    margin: 0;
     font-family: 'Battambang', cursive;
+    outline: none;
+    
 }
+/* pnc logo */
 .logo{
     width: 230px;
     height: 60px;
-    background-color: #EEA10C;
 }
 .container .content,.cards{
     font-size: 20px;
@@ -27,12 +31,111 @@ body{
 .container .cards #create{
     background-image: url(/img/create-quiz.jpg);
 }
+
+/* button on image */
 .container .cards .card-image button{
     font-size: 20px;
     font-weight: 600;
     text-align: center;
     height: 2.5rem;
     width: 7rem;
+    margin-left: 3rem;
+    margin-top: 3rem;
     border: none;
     background: #EEA10C;
+}
+
+/* text on image */
+.container .cards .card-image #p{
+    margin-left: 3rem;
+    margin-top: 7rem;
+}
+
+/*  */
+#edit-quiz{
+    width: 100%; 
+    margin: auto;
+}
+/* edit quiz form */
+#form-add{
+    width: 100%;
+    text-align: center;
+}
+/* all input */
+input{
+    padding: 10px;
+    margin: 12px;
+}
+/* edit quiz menu */
+.header{
+    padding: 10px;
+    text-align: center;
+    background: blue;
+}
+/* back button  */
+.back{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+#btn-back{
+    margin-top: 20px;
+    height: 2rem;
+    width: 80px;
+    padding: 5px;
+    border-radius: 5px;
+    border: solid 2px orange ;
+}
+/* add title */
+.tittle{
+    margin-top: 20px;
+    width: 50%;
+    border: solid 2px orange;
+}
+
+
+#tittle{
+    margin-top: 40px;
+    width: 500px;
+    
+}
+
+/* input question */
+#question{
+    margin-top:50px;
+    width: 500px;
+}
+
+#question-content{
+    width: 50%;
+    margin: auto;
+}
+.card_question{
+    margin: 10px;
+    padding: 10px;
+    width: 100%;
+    border-left: 3px solid #EEA10C;
+    background: rgb(214, 212, 212);
+}
+/*input score  */
+#score{
+     width: 3%; 
+     outline: none;
+     border: none;
+     background: rgb(109, 143, 196);
+     margin-left: -8px;
+}
+
+
+#question:hover, .label-choice:hover{
+    border: 3px solid #EEA10C;
+}
+/* button add queston  */
+#btn-add-question{
+    margin-top: 30px;
+    width: 25%;
+    padding: 11px;
+    background: #EEA10C;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
