@@ -86,6 +86,16 @@ input{
     border-radius: 5px;
     border: solid 2px orange ;
 }
+
+#btn-back1{
+    margin-top: 20px;
+    height: 2rem;
+    width: 80px;
+    padding: 5px;
+    border-radius: 5px;
+    border: solid 2px orange ;
+}
+
 /* add title */
 .tittle{
     margin-top: 20px;

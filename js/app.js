@@ -1,5 +1,96 @@
 
+// back from edit quiz to menu//
+function goToMenu() {
+    if (document.getElementById('menu')) {
 
+        if (document.getElementById('menu').style.display == 'none') {
+
+            document.getElementById('menu').style.display = 'block';
+            document.getElementById('edit-quiz').style.display = 'none';
+            document.getElementById('do-quiz').style.display = 'none';
+
+            
+        
+        }
+    }
+}
+
+let backButton = document.getElementById('btn-back');
+ backButton.addEventListener('click',goToMenu)
+
+//back from do quiz to menu//
+function backToMenu() {
+    if (document.getElementById('menu')) {
+
+        if (document.getElementById('menu').style.display == 'none') {
+
+            document.getElementById('menu').style.display = 'block';
+            document.getElementById('edit-quiz').style.display = 'none';
+            document.getElementById('do-quiz').style.display = 'none';
+
+            
+        
+
+        }
+    }
+}
+
+let btn_back = document.getElementById('btn-back1');
+btn_back.addEventListener('click',backToMenu)
+
+ 
+// function to display Edit quiz page
+ function displayEditQuizPage(){
+    if (document.getElementById('edit-quiz')) {
+
+        if (document.getElementById('edit-quiz').style.display == 'none') {
+
+            document.getElementById('menu').style.display = 'none';
+            document.getElementById('edit-quiz').style.display = 'block';
+            document.getElementById('do-quiz').style.display = 'none';
+
+            
+        
+
+        }
+    }
+ }
+
+ let createButton = document.getElementById('btn-create');
+ createButton.addEventListener('click', displayEditQuizPage)
+
+// function display do quiz page
+
+function displayDoQuiz(){
+    if (document.getElementById('do-quiz')) {
+
+        if (document.getElementById('do-quiz').style.display == 'none') {
+
+            document.getElementById('menu').style.display = 'none';
+            document.getElementById('edit-quiz').style.display = 'none';
+            document.getElementById('do-quiz').style.display = 'block';
+
+        
+
+        }
+    }
+}
+
+let startButton = document.getElementById('btn-start');
+startButton .addEventListener('click', displayDoQuiz )
+
+
+
+
+// hide do-quiz page and edit quiz page//
+
+var  editQuiz= document.getElementById("edit-quiz");
+editQuiz.style.display='none';
+
+var  doQuiz= document.getElementById("do-quiz");
+doQuiz.style.display='none';
+
+    
 
 
 
@@ -10,7 +101,7 @@ function addQuestion(event){
     let question=document.querySelector("#question").value;
     listQuestion["question"]=question
     // set value of choice and add to list
-    let choices=document.querySelectorAll("input[name='choice']")
+    let choices=document.querySelectorAll("input[name='choice']");
     let choice=""
     for (let index in choices){
         if(choices[index].checked){
