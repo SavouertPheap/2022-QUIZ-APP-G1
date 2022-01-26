@@ -81,6 +81,45 @@ startButton .addEventListener('click', displayDoQuiz )
 
 
 
+// function to show the question
+function displayQuestion(){
+    let content=document.querySelector("#question-content")
+    // delet item
+    let oldCard = document.getElementsByClassName("card");
+    if (oldCard.length>0){
+        oldCard[0].remove()
+    }
+    let card =document.createElement("div")
+    card.className="card"
+    content.appendChild(card)
+    for(let objects of DataAllQuestion){
+        // creat div with class name card and append to #question-content
+        let card_question=document.createElement("div")
+        card_question.className="card_question"
+        card.appendChild(card_question)
+        // creat p for question and append to card
+        let question=document.createElement("p")
+        question.className="question"
+        question.textContent=objects["question"]
+        // content.appendChild(question)
+        // card.appendChild(question);
+        card_question.appendChild(question)
+        // loop on ["answers"]
+        let card_answers=document.createElement("div")
+        card_answers.className="choies"
+        // card.appendChild(card_answers)
+        card_question.appendChild(card_answers)
+        for(let i of objects['answers']){
+            let answer=document.createElement("p")
+            answer.className="answer"
+            // checked if radion checked
+            answer.textContent=i
+            card_answers.appendChild(answer)
+        }
+    }
+}
+
+
 
 // hide do-quiz page and edit quiz page//
 
@@ -126,7 +165,7 @@ function addQuestion(event){
     console.log(score);
 
     // // display what user have added
-    // displayQuestion()
+    displayQuestion()
 }
 
 // main data of question
