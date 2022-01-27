@@ -1,3 +1,64 @@
+// ..............hide show........................................//
+// back from edit quiz to menu//
+function goToMenu() {
+    if (document.getElementById('menu')) {
+        if (document.getElementById('menu').style.display == 'none') {
+            document.getElementById('menu').style.display = 'block';
+            document.getElementById('edit-quiz').style.display = 'none';
+            document.getElementById('do-quiz').style.display = 'none';
+        }
+    }
+}
+
+// let backButton = document.getElementById('btn-back');
+//  backButton.addEventListener('click',goToMenu)
+
+//back from do quiz to menu//
+function backToMenu() {
+    if (document.getElementById('menu')) {
+
+        if (document.getElementById('menu').style.display == 'none') {
+
+            document.getElementById('menu').style.display = 'block';
+            document.getElementById('edit-quiz').style.display = 'none';
+            document.getElementById('do-quiz').style.display = 'none';
+        }
+    }
+}
+
+
+ 
+// function to display Edit quiz page
+ function displayEditQuizPage(){
+    if (document.getElementById('edit-quiz')) {
+
+        if (document.getElementById('edit-quiz').style.display == 'none') {
+            document.getElementById('menu').style.display = 'none';
+            document.getElementById('edit-quiz').style.display = 'block';
+            document.getElementById('do-quiz').style.display = 'none';
+        }
+    }
+ }
+
+//  let createButton = document.getElementById('btn-create');
+//  createButton.addEventListener('click', displayEditQuizPage)
+
+// function display do quiz page
+
+function displayDoQuiz(){
+    if (document.getElementById('do-quiz')) {
+
+        if (document.getElementById('do-quiz').style.display == 'none') {
+            document.getElementById('menu').style.display = 'none';
+            document.getElementById('edit-quiz').style.display = 'none';
+            document.getElementById('do-quiz').style.display = 'block';       
+        }
+    }
+}
+
+// let startButton = document.getElementById('btn-start');
+// startButton .addEventListener('click', displayDoQuiz )
+
 
 
 
@@ -30,6 +91,26 @@ function radioCheck(){
     return(false)
 }
 // function to show the question
+
+
+
+// hide do-quiz page and edit quiz page//
+
+var  editQuiz= document.getElementById("edit-quiz");
+editQuiz.style.display='none';
+
+var  doQuiz= document.getElementById("do-quiz");
+doQuiz.style.display='none';
+
+//...... ..............hide show..........................................................//
+
+
+
+
+
+
+// .............display question......................................//
+// / function to show the question//
 function displayQuestion(){
     
     let content=document.querySelector("#question-content")
@@ -75,23 +156,30 @@ function displayQuestion(){
         card_question.appendChild(edit)
     }
 }
+// .............................add question...................//
 
 
 // number of each question
 let OrderOfquestion=0
+
 // function get value from input to create quiz
 function addQuestion(event){
     let listQuestion={}
+
     // set value of question and add to list
     let question=document.querySelector("#question").value;
+
     // set value of choice and add to list
     let choices=document.querySelectorAll("input[name='choice']")
     let choice=""
+
     // set value of eachanswer and add to list
     let AllAnswers=[]
-    let answers=document.querySelectorAll("input[name='label-choice']")       
+    let answers=document.querySelectorAll("input[name='label-choice']")     
+
     // get the score
     let score= document.querySelector("#score").value;
+
     // // display what user have added
     if(question.value!=="" && radioCheck() && answerCheck()){
         // value of question
@@ -126,8 +214,10 @@ function addQuestion(event){
         console.log(DataAllQuestion);
         console.log(OrderOfquestion);
         console.log(score);
+
         // call function to display
         displayQuestion()
+
         // make all input empty agian
         document.querySelector("#question").value=""
         let radioClearForm=document.getElementsByName("choice")
@@ -148,6 +238,24 @@ function addQuestion(event){
 
 // main data of question
 let DataAllQuestion=[]
+
+// btn go to start quiz
+let startButton = document.getElementById('btn-start');
+startButton .addEventListener('click', displayDoQuiz )
+
+// btn go to creat quiz
+let createButton = document.getElementById('btn-create');
+createButton.addEventListener('click', displayEditQuizPage)
+
+// btn go to menu
+let backButton = document.getElementById('btn-back');
+ backButton.addEventListener('click',goToMenu)
+ 
+// button back to menu
+let btn_back = document.getElementById('btn-back1');
+btn_back.addEventListener('click',backToMenu)
+
 // add question button
 let btnAdd=document.getElementById('btn-add-question')
 btnAdd.addEventListener('click',addQuestion)
+
