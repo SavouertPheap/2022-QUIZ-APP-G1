@@ -99,6 +99,17 @@ input{
     width: 500px;
     
 }
+/* delete and edit icons */
+.fa-trash {
+    color: red;
+    float: right;
+    font-size: 25px;
+}
+.fa-edit{
+    color: blue;
+    float: right;
+    font-size: 25px;
+}
 
 /* input question */
 #question{
@@ -112,7 +123,7 @@ input{
 }
 .card_question{
     margin: 10px;
-    padding: 10px;
+    padding: 2rem;
     width: 100%;
     border-left: 3px solid #EEA10C;
     background: rgb(214, 212, 212);
