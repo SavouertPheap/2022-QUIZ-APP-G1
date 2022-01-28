@@ -56,6 +56,11 @@
     width: 100%; 
     margin: auto;
 }
+/* title do quiz */
+/* .do_menu{
+    font-size: 25px;
+    color: white;
+} */
 /* edit quiz form */
 #form-add{
     width: 100%;
@@ -71,6 +76,8 @@ input{
     padding: 10px;
     text-align: center;
     background: blue;
+    font-size: 30px;
+    color: white;
 }
 /* back button  */
 .back{
@@ -159,4 +166,69 @@ input{
     background: #EEA10C;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+/* do quiz */
+.nav-quiz{
+    margin: 10px auto;
+    width: 100%;
+}
+.quiz-card{
+    width: 70%;
+    margin: auto;
+    text-align: center;
+}
+.cardAnswer{
+    background: rgb(199, 196, 196);
+}
+.eachAnswer{
+    display: flex;
+    margin-left: 25px;
+}
+.questions{
+    background:blue;
+    color: white;
+}
+.titleCard{
+    width: 100%;
+    margin-top: 20px;
+    background: blue;
+    color: white;
+    font-size: 23px;
+}
+.questionCard{
+    font-size: 19px;
+    margin-top: 30px;
+}
+/* button submit */
+.submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-submit {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: blue;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
 }

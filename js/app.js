@@ -124,6 +124,7 @@ function displayQuestion(){
     content.appendChild(card)
     for(let objects of DataAllQuestion){
         // creat div with class name card and append to #question-content
+
         let card_question=document.createElement("div")
         card_question.className="card_question"
         card.appendChild(card_question)
@@ -165,7 +166,8 @@ let OrderOfquestion=0
 // function get value from input to create quiz
 function addQuestion(event){
     let listQuestion={}
-
+    let titlequiz=document.querySelector('.tittle').value
+    listQuestion.title=titlequiz
     // set value of question and add to list
     let question=document.querySelector("#question").value;
 
@@ -211,12 +213,9 @@ function addQuestion(event){
         
         // append listQuesion to DataAllQuestion
         DataAllQuestion.push(listQuestion)
-        console.log(DataAllQuestion);
-        console.log(OrderOfquestion);
-        console.log(score);
-
         // call function to display
         displayQuestion()
+        saveQuiz()
 
         // make all input empty agian
         document.querySelector("#question").value=""
@@ -235,6 +234,68 @@ function addQuestion(event){
     }
 
 }
+
+num=0
+// fuction for do quiz
+function saveQuiz(event){
+    // // remove the answer that have duble
+    let quizCards = document.getElementsByClassName("quiz-card");
+    if (quizCards.length>0){
+        quizCards[0].remove()
+    }
+        // // create card content question and answers
+        let componant=document.querySelector('.nav-quiz')
+        console.log(componant);
+        let cardQuiz=document.createElement('div')
+        cardQuiz.className='quiz-card'
+        componant.appendChild(cardQuiz)
+        // // loop on the array to get all value on array
+        for (let obj of DataAllQuestion){
+            // // to get title quiz
+            let cardTitle=document.createElement('div')
+            cardTitle.className='titleCard'
+            let cardTitles=document.createElement('p')
+            cardTitles.className='titles'
+            cardTitles.textContent=obj['title']
+            console.log(cardTitles);
+            if (cardTitles!=''){
+                cardTitle.appendChild(cardTitles)
+                cardQuiz.appendChild(cardTitle)
+            }
+            // // to get the question quiz
+            let cardQuestions=document.createElement('div')
+            cardQuestions.className='questionCard'
+            cardQuiz.appendChild(cardQuestions)
+            let cardQuestion=document.createElement('p')
+            cardQuestion.className='questions'
+            cardQuestion.textContent=obj['question']
+            cardQuestions.appendChild(cardQuestion)
+            // // card to content only answers
+            let answerCard=document.createElement('div')
+            answerCard.className='cardAnswer'
+            cardQuestions.appendChild(answerCard)
+            // // loop on key answers to get the each answer
+            for (let answer of obj['answers']){
+                let answerInp=document.createElement('div')
+                answerInp.className='eachAnswer'
+                let answers=document.createElement('p')
+                answers.className='answerQuiz'
+                let radio=document.createElement('input')
+                radio.type="radio"
+                radio.name='radio'+num.toString()
+                radio.id='choiceAnswer'
+                answers.textContent=answer
+                answerInp.appendChild(radio)
+                answerInp.appendChild(answers)
+                answerCard.appendChild(answerInp)
+            }
+            num+=1
+        }
+}
+
+let btnSave=document.getElementById('btn-start')
+btnSave.addEventListener('click',saveQuiz)
+
 
 // main data of question
 let DataAllQuestion=[]
