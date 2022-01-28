@@ -10,6 +10,8 @@
 .logo{
     width: 230px;
     height: 60px;
+    margin-left: 20px;
+    margin-bottom: 4px;
 }
 .container .content,.cards{
     font-size: 20px;
@@ -42,7 +44,8 @@
     margin-left: 3rem;
     margin-top: 3rem;
     border: none;
-    background: #EEA10C;
+    color: white;
+    background: blue;
 }
 
 /* text on image */
@@ -91,7 +94,10 @@ input{
     width: 80px;
     padding: 5px;
     border-radius: 5px;
-    border: solid 2px orange ;
+    margin-right: 25px;
+    border: none;
+    color: white;
+   background: blue;
 }
 
 #btn-back1{
@@ -99,15 +105,18 @@ input{
     height: 2rem;
     width: 80px;
     padding: 5px;
+    margin-right: 25px;
     border-radius: 5px;
-    border: solid 2px orange ;
+    border: none;
+    color: white;
+   background: blue;
 }
 
 /* add title */
 .tittle{
     margin-top: 20px;
     width: 50%;
-    border: solid 2px orange;
+    border: solid 2px blue;
 }
 
 
@@ -142,7 +151,7 @@ input{
     margin: 10px;
     padding: 2rem;
     width: 100%;
-    border-left: 3px solid #EEA10C;
+    border-left: 3px solid blue;
     background: rgb(214, 212, 212);
 }
 /*input score  */
@@ -150,20 +159,22 @@ input{
      width: 3%; 
      outline: none;
      border: none;
-     background: rgb(109, 143, 196);
+     color: white;
+     background: blue;
      margin-left: -8px;
 }
 
 
 #question:hover, .label-choice:hover{
-    border: 3px solid #EEA10C;
+    border: 3px solid blue;
 }
 /* button add queston  */
 #btn-add-question{
     margin-top: 30px;
     width: 25%;
     padding: 11px;
-    background: #EEA10C;
+    background: blue;
+    color: white;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }

@@ -55,14 +55,6 @@ function displayDoQuiz(){
         }
     }
 }
-
-// let startButton = document.getElementById('btn-start');
-// startButton .addEventListener('click', displayDoQuiz )
-
-
-
-
-
 // function remove question
 function remove(event){
     let itemForRemove=event.target.id
@@ -90,24 +82,11 @@ function radioCheck(){
     }
     return(false)
 }
-// function to show the question
-
-
-
 // hide do-quiz page and edit quiz page//
-
 var  editQuiz= document.getElementById("edit-quiz");
 editQuiz.style.display='none';
-
 var  doQuiz= document.getElementById("do-quiz");
 doQuiz.style.display='none';
-
-//...... ..............hide show..........................................................//
-
-
-
-
-
 
 // .............display question......................................//
 // / function to show the question//
@@ -257,7 +236,6 @@ function saveQuiz(event){
             let cardTitles=document.createElement('p')
             cardTitles.className='titles'
             cardTitles.textContent=obj['title']
-            console.log(cardTitles);
             if (cardTitles!=''){
                 cardTitle.appendChild(cardTitles)
                 cardQuiz.appendChild(cardTitle)
