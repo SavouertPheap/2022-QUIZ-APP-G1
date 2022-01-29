@@ -13,7 +13,6 @@ function goToMenu() {
 //back from do quiz to menu//
 function backToMenu() {
     if (document.getElementById('menu')) {
-
         if (document.getElementById('menu').style.display == 'none') {
 
             document.getElementById('menu').style.display = 'block';
@@ -25,7 +24,6 @@ function backToMenu() {
 // function to display Edit quiz page
  function displayEditQuizPage(){
     if (document.getElementById('edit-quiz')) {
-
         if (document.getElementById('edit-quiz').style.display == 'none') {
             document.getElementById('menu').style.display = 'none';
             document.getElementById('edit-quiz').style.display = 'block';
@@ -37,7 +35,6 @@ function backToMenu() {
 
 function displayDoQuiz(){
     if (document.getElementById('do-quiz')) {
-
         if (document.getElementById('do-quiz').style.display == 'none') {
             document.getElementById('menu').style.display = 'none';
             document.getElementById('edit-quiz').style.display = 'none';
@@ -80,8 +77,7 @@ doQuiz.style.display='none';
 
 // .............display question......................................//
 // / function to show the question//
-function displayQuestion(){
-    
+function displayQuestion(event){
     let content=document.querySelector("#question-content")
     // delet item
     let oldCard = document.getElementsByClassName("card");
@@ -93,7 +89,6 @@ function displayQuestion(){
     content.appendChild(card)
     for(let objects of DataAllQuestion){
         // creat div with class name card and append to #question-content
-
         let card_question=document.createElement("div")
         card_question.className="card_question"
         card.appendChild(card_question)
@@ -129,7 +124,6 @@ function displayQuestion(){
 // .............................add question...................//
 // number of each question
 let OrderOfquestion=0
-
 // function get value from input to create quiz
 function addQuestion(event){
     let listQuestion={}
@@ -137,23 +131,18 @@ function addQuestion(event){
     listQuestion.title=titlequiz
     // set value of question and add to list
     let question=document.querySelector("#question").value;
-
     // set value of choice and add to list
     let choices=document.querySelectorAll("input[name='choice']")
     let choice=0
-
     // set value of eachanswer and add to list
     let AllAnswers=[]
     let answers=document.querySelectorAll("input[name='label-choice']")     
-
     // get the score
     let score= document.querySelector("#score").value;
-
     // // display what user have added
     if(question.value!=="" && radioCheck() && answerCheck()){
         // value of question
         listQuestion["question"]=question
-        
         // answer choice
         for (let index=0; index<choices.length;index++){
             if(choices[index].checked){
@@ -167,24 +156,19 @@ function addQuestion(event){
         for(let answer of answers){
             AllAnswers.push(answer.value)
         }
-
         // add answer
         listQuestion["answers"]=AllAnswers
-
         // add score
         listQuestion["point"]= score;
-        
         // increas id of each question
         OrderOfquestion+=1
         // set id of each qeustion
         listQuestion["idQuestion"]=OrderOfquestion
-        
         // append listQuesion to DataAllQuestion
         DataAllQuestion.push(listQuestion)
         // call function to display
         displayQuestion()
         saveQuiz()
-
         // make all input empty agian
         document.querySelector("#question").value=""
         let radioClearForm=document.getElementsByName("choice")
@@ -206,25 +190,11 @@ function addQuestion(event){
 var num=0
 let  number=0
 function saveQuiz(event){
-//     // // remove the answer that have duble
-//     // let quizCards = document.getElementsByClassName("quiz-card");
-//     // if (quizCards.length>0){
-//     //     quizCards[0].remove()
-//     // }
-    // event.preventDefault();
-//     for (let obj of DataAllQuestions){
-//         for (let i in obj){
-//             if (i == "title"){
-//                 cardTitles.textContent = obj[i];
-//             }
-//             if (i == "question"){
-//                 cardQuestion.textContent=obj[i]
-//             }
-//             if (i == "answers"){
-                
-//             }
-//         }
-//     }
+    // // remove the answer that have duble
+     let quizCards = document.getElementsByClassName("quiz-card");
+    if (quizCards.length>0){
+         quizCards[0].remove()
+    }
         // // create card content question and answers
         let componant=document.querySelector('.nav-quiz')
         let cardQuiz=document.createElement('div')
@@ -232,7 +202,7 @@ function saveQuiz(event){
         componant.appendChild(cardQuiz)
 
         // loop on the array to get all value on array
-        for (let obj of DataAllQuestions){
+        for (let obj of DataAllQuestion){
             // to get title quiz
             let cardTitle=document.createElement('div')
             cardTitle.className='titleCard'
@@ -272,7 +242,6 @@ function saveQuiz(event){
                 radio.name=radioNames
                 radio.id='choiceAnswer'
                 radio.value=number+1
-
                 answers.textContent=answer
                 answerInp.appendChild(radio)
                 answerInp.appendChild(answers)
@@ -292,56 +261,105 @@ let counter=0
 // // show the correction answers
 function correctionAsnwers(){
     let idRadio=document.querySelectorAll('#choiceAnswer')
-    console.log(idRadio);
-
         for (let i of idRadio){
             if(i.checked){
                 newNumber=i.value
                 arrayCheckanswer.push(newNumber)
-
             }
         }
-        for (let object of DataAllQuestions){
+        for (let object of DataAllQuestion){
             let correct=object['choice']
-            arrayCorrection.push(correct)
-            
+            arrayCorrection.push(correct)            
         }
+        let totalScore=0
         for (let n in arrayCorrection){
-        let score=document.getElementById('scoreResult')
-        if (arrayCorrection[n]==arrayCheckanswer[n]){
+            totalScore+=10
+            let score=document.getElementById('scoreResult')
+            if (arrayCorrection[n]==arrayCheckanswer[n]){
             counter+=10
-            score.textContent=counter
-        }
-       
+            score.textContent=counter +'/'+ totalScore
+            }
     }
 
 }
-var DataAllQuestions=[
-    {   title:"present simple",
-        answers:["be going to school", "are going", "go", "goes"],
-        choice:"3",
+
+var DataAllQuestion=[
+    {   title:"First Second and Third conditional Quiz",
+        answers:["Will be", "Were", "Had be", "Would have been"],
+        choice:"2",
         idQuestion:1,
         point:"5",
-        question:"1. We _______ to school today?"
+        question:"1. If I _______________ stronger,I'd help you carry the piano."
     },
     {
-        answers:["be going to school", "are going", "go", "goes"],
-        choice:"3",
+        answers:["Will stop", "Had stopped", "Would stop", "Would have stopped"],
+        choice:"4",
         idQuestion:1,
         point:"5",
-        question:"2. We _______ to school today?"
+        question:"2. If we'd seen you, we _____________."
     },
     {
-        answers:["be going to school", "are going", "go", "goes"],
+        answers:["Meet", "Had met", "Would meet", "Would have met"],
+        choice:"1",
+        idQuestion:1,
+        point:"5",
+        question:"3.If we ___________ him tomorrow,we'll say hello."
+    },
+    {
+        answers:["Has", "Will have", "Had had", "Had"],
         choice:"3",
         idQuestion:1,
         point:"5",
-        question:"3. We _______ to school today?"
+        question:"4. He would have repaired the car himself if he ______________ the tools."
+    },
+    {
+        answers:["Will break", "Broke", "Would break", "Would have broken"],
+        choice:"1",
+        idQuestion:1,
+        point:"5",
+        question:"5. If you drop the vase,it__________________."
+    },
+    {
+        answers:["Will not pass", "Did not pass", "Had not passed", "Would not have passed"],
+        choice:"4",
+        idQuestion:1,
+        point:"5",
+        question:"6. If hadn't studied, I _____________ the exam."
+    },
+    {
+        answers:["Have", "Had", "Had had", "Would have had"],
+        choice:"2",
+        idQuestion:1,
+        point:"5",
+        question:"7. I wouldn't go to school by bus if I __________ a driving license."
+    },
+    {
+        answers:["Doesn't see", "Hadn't seen", "Didn't see", "Wouldn't see"],
+        choice:"3",
+        idQuestion:1,
+        point:"5",
+        question:"8. If she _________ him every day,she'd be lovesick."
+    },
+    {
+        answers:["Won't travel", "Didn't travel", "Hadn't traveled", "Wouldn't travel"],
+        choice:"1",
+        idQuestion:1,
+        point:"5",
+        question:"9. I _______________ to London if I don't get a cheap flight."
+    },
+    {
+        answers:["Tell", "Told", "Had told", "Would have told"],
+        choice:"2",
+        idQuestion:1,
+        point:"5",
+        question:"10. We'd be stupid if we ___________ him about our secret."
     }
+
+
 ]
 
 // main data of question
-let DataAllQuestion=[]
+// let DataAllQuestion=[]
 
 // // btn sumbit quiz
 let btnSubmit=document.getElementById('btn-submit')
