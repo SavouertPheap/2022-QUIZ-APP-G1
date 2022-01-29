@@ -10,9 +10,6 @@ function goToMenu() {
     }
 }
 
-// let backButton = document.getElementById('btn-back');
-//  backButton.addEventListener('click',goToMenu)
-
 //back from do quiz to menu//
 function backToMenu() {
     if (document.getElementById('menu')) {
@@ -25,9 +22,6 @@ function backToMenu() {
         }
     }
 }
-
-
- 
 // function to display Edit quiz page
  function displayEditQuizPage(){
     if (document.getElementById('edit-quiz')) {
@@ -39,10 +33,6 @@ function backToMenu() {
         }
     }
  }
-
-//  let createButton = document.getElementById('btn-create');
-//  createButton.addEventListener('click', displayEditQuizPage)
-
 // function display do quiz page
 
 function displayDoQuiz(){
@@ -137,8 +127,6 @@ function displayQuestion(){
     }
 }
 // .............................add question...................//
-
-
 // number of each question
 let OrderOfquestion=0
 
@@ -152,7 +140,7 @@ function addQuestion(event){
 
     // set value of choice and add to list
     let choices=document.querySelectorAll("input[name='choice']")
-    let choice=""
+    let choice=0
 
     // set value of eachanswer and add to list
     let AllAnswers=[]
@@ -167,9 +155,10 @@ function addQuestion(event){
         listQuestion["question"]=question
         
         // answer choice
-        for (let index in choices){
+        for (let index=0; index<choices.length;index++){
             if(choices[index].checked){
-                choice=index.toString();
+                choice=index+1;
+                console.log(choice)
             }
         }
         listQuestion["choice"]=choice
@@ -211,28 +200,43 @@ function addQuestion(event){
     }else{
         alert("YOU MUST FILL ALL!")
     }
+    console.log(DataAllQuestion);
 
 }
-
-num=0
-// fuction for do quiz
+var num=0
+let  number=0
 function saveQuiz(event){
-    // // remove the answer that have duble
-    let quizCards = document.getElementsByClassName("quiz-card");
-    if (quizCards.length>0){
-        quizCards[0].remove()
-    }
+//     // // remove the answer that have duble
+//     // let quizCards = document.getElementsByClassName("quiz-card");
+//     // if (quizCards.length>0){
+//     //     quizCards[0].remove()
+//     // }
+    // event.preventDefault();
+//     for (let obj of DataAllQuestions){
+//         for (let i in obj){
+//             if (i == "title"){
+//                 cardTitles.textContent = obj[i];
+//             }
+//             if (i == "question"){
+//                 cardQuestion.textContent=obj[i]
+//             }
+//             if (i == "answers"){
+                
+//             }
+//         }
+//     }
         // // create card content question and answers
         let componant=document.querySelector('.nav-quiz')
-        console.log(componant);
         let cardQuiz=document.createElement('div')
         cardQuiz.className='quiz-card'
         componant.appendChild(cardQuiz)
-        // // loop on the array to get all value on array
-        for (let obj of DataAllQuestion){
-            // // to get title quiz
+
+        // loop on the array to get all value on array
+        for (let obj of DataAllQuestions){
+            // to get title quiz
             let cardTitle=document.createElement('div')
             cardTitle.className='titleCard'
+            
             let cardTitles=document.createElement('p')
             cardTitles.className='titles'
             cardTitles.textContent=obj['title']
@@ -240,7 +244,7 @@ function saveQuiz(event){
                 cardTitle.appendChild(cardTitles)
                 cardQuiz.appendChild(cardTitle)
             }
-            // // to get the question quiz
+            // to get the question quiz
             let cardQuestions=document.createElement('div')
             cardQuestions.className='questionCard'
             cardQuiz.appendChild(cardQuestions)
@@ -248,11 +252,15 @@ function saveQuiz(event){
             cardQuestion.className='questions'
             cardQuestion.textContent=obj['question']
             cardQuestions.appendChild(cardQuestion)
-            // // card to content only answers
+            // card to content only answers
+            
             let answerCard=document.createElement('div')
             answerCard.className='cardAnswer'
             cardQuestions.appendChild(answerCard)
-            // // loop on key answers to get the each answer
+            let rad=document.createElement('p')
+            rad.textContent=obj['choice']
+            
+            // loop on key answers to get the each answer
             for (let answer of obj['answers']){
                 let answerInp=document.createElement('div')
                 answerInp.className='eachAnswer'
@@ -260,23 +268,88 @@ function saveQuiz(event){
                 answers.className='answerQuiz'
                 let radio=document.createElement('input')
                 radio.type="radio"
-                radio.name='radio'+num.toString()
+                var radioNames='radio'+ num.toString()
+                radio.name=radioNames
                 radio.id='choiceAnswer'
+                radio.value=number+1
+
                 answers.textContent=answer
                 answerInp.appendChild(radio)
                 answerInp.appendChild(answers)
                 answerCard.appendChild(answerInp)
+                
+                number+=1
+                if(number==4){
+                    number=0
+                }
             }
             num+=1
         }
 }
+let arrayCorrection=[]
+let arrayCheckanswer=[]
+let counter=0
+// // show the correction answers
+function correctionAsnwers(){
+    let idRadio=document.querySelectorAll('#choiceAnswer')
+    console.log(idRadio);
 
-let btnSave=document.getElementById('btn-start')
-btnSave.addEventListener('click',saveQuiz)
+        for (let i of idRadio){
+            if(i.checked){
+                newNumber=i.value
+                arrayCheckanswer.push(newNumber)
 
+            }
+        }
+        for (let object of DataAllQuestions){
+            let correct=object['choice']
+            arrayCorrection.push(correct)
+            
+        }
+        for (let n in arrayCorrection){
+        let score=document.getElementById('scoreResult')
+        if (arrayCorrection[n]==arrayCheckanswer[n]){
+            counter+=10
+            score.textContent=counter
+        }
+       
+    }
+
+}
+var DataAllQuestions=[
+    {   title:"present simple",
+        answers:["be going to school", "are going", "go", "goes"],
+        choice:"3",
+        idQuestion:1,
+        point:"5",
+        question:"1. We _______ to school today?"
+    },
+    {
+        answers:["be going to school", "are going", "go", "goes"],
+        choice:"3",
+        idQuestion:1,
+        point:"5",
+        question:"2. We _______ to school today?"
+    },
+    {
+        answers:["be going to school", "are going", "go", "goes"],
+        choice:"3",
+        idQuestion:1,
+        point:"5",
+        question:"3. We _______ to school today?"
+    }
+]
 
 // main data of question
 let DataAllQuestion=[]
+
+// // btn sumbit quiz
+let btnSubmit=document.getElementById('btn-submit')
+btnSubmit.addEventListener('click',correctionAsnwers)
+
+// btn to display quiz
+let btnSave=document.getElementById('btn-start')
+btnSave.addEventListener('click',saveQuiz)
 
 // btn go to start quiz
 let startButton = document.getElementById('btn-start');

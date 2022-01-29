@@ -183,7 +183,7 @@ input{
     margin: 10px auto;
     width: 100%;
 }
-.quiz-card{
+.quiz-card,.quiz{
     width: 70%;
     margin: auto;
     text-align: center;
@@ -216,7 +216,7 @@ input{
     justify-content: center;
     align-items: center;
 }
-.btn-submit {
+#btn-submit {
   align-items: center;
   background-clip: padding-box;
   background-color: blue;
@@ -242,4 +242,19 @@ input{
   touch-action: manipulation;
   vertical-align: baseline;
   width: auto;
+}
+.scores {
+    display: flex;
+    width: 30%;
+    margin: auto;
+    background: blue;
+    color:#fff;
+    padding: 13px;
+    border-radius: 7px;
+    justify-content: center;
+    text-align: center;
+    border: none;
+}
+.scores p{
+    margin-right: 15px;
 }

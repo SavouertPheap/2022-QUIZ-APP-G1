@@ -43,6 +43,7 @@
             <input type="text" class="tittle" placeholder="Add quiz tittle..">
             <form action="#">                
                 <input type="text" name="question" id="question" placeholder="Add question..">
+                <label for="score">Score: </label>
                 <input type='number' name='point' id='score' value="5">
                 <div id="choices">
                     <input type="radio" name="choice" id="choice"><input type="text" placeholder="Add answer" name="label-choice" class="label-choice">
@@ -69,10 +70,15 @@
             <button id="btn-back1">Back</button>
         </div>
         <div class="nav-quiz">
+            <div class="scores">
+                <p>Your score: </p><span id="scoreResult"></span>
+            </div>
+           
         </div>
         <div class="submit">
-            <button class="btn-submit">Submit</button>
+            <button id="btn-submit">Submit</button>
         </div>
+        
         
     </section>
 </body>
